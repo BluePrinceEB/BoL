@@ -1,6 +1,6 @@
 if myHero.charName ~= "Quinn" then return end
 
-
+--SexyAutoupdate: by Google aka Bing aka Icesythe7 aka Lucas aka SexyGuy
 local version = "1.0"
 local AUTOUPDATE = true
 local UPDATE_HOST = "raw.githubusercontent.com"
