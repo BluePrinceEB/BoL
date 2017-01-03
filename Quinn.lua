@@ -1,5 +1,10 @@
 if myHero.charName ~= "Quinn" then return end
 
+function _SendMessage(text, name)
+    if not name then name = "[Shulepin] Quinn" end
+    print("<b><font color=\"#ffb10a\">"..name..": <font color=\"#ffffff\"><b>"..text) 
+end
+
 --SexyAutoupdate: by Google aka Bing aka Icesythe7 aka Lucas aka SexyGuy
 local version = "1.0"
 local AUTOUPDATE = true
@@ -14,16 +19,16 @@ if AUTOUPDATE then
 		ServerVersion = type(tonumber(ServerData)) == "number" and tonumber(ServerData) or nil
 		if ServerVersion then
 			if tonumber(version) < ServerVersion then
-				SendMessage("New version available "..ServerVersion)
-				SendMessage("Updating, please don't press F9")
-				DelayAction(function() DownloadFile(UPDATE_URL, UPDATE_FILE_PATH, function () SendMessage("Successfully updated. ("..version.." => "..ServerVersion.."), press F9 twice to load the updated version.") end) end, 2)
+				_SendMessage("New version available "..ServerVersion)
+				_SendMessage("Updating, please don't press F9")
+				DelayAction(function() DownloadFile(UPDATE_URL, UPDATE_FILE_PATH, function () _SendMessage("Successfully updated. ("..version.." => "..ServerVersion.."), press F9 twice to load the updated version.") end) end, 2)
 				return
 			else
-				SendMessage("You have got the latest version ("..ServerVersion..")")
+				_SendMessage("You have got the latest version ("..ServerVersion..")")
 			end
 		end
 	else
-		SendMessage("Error downloading version info")
+		_SendMessage("Error downloading version info")
 	end
 end
 
@@ -68,12 +73,7 @@ function Quinn:__init()
     AddProcessSpellCallback(function(unit, spell) self:ProcessSpell(unit, spell) end)
     AddDrawCallback(function() self:Draw() end)
 
-	DelayAction(function() SendMessage("Sucessfully Loaded!") end, 2)
-end
-
-function SendMessage(text, name)
-    if not name then name = "[Shulepin] Quinn" end
-	print("<b><font color=\"#ffb10a\">"..name..": <font color=\"#ffffff\"><b>"..text) 
+    DelayAction(function() _SendMessage("Sucessfully Loaded!") end, 2)
 end
 
 function Quinn:LoadMenu()
