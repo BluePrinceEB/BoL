@@ -24,7 +24,7 @@ if AUTOUPDATE then
 				DelayAction(function() DownloadFile(UPDATE_URL, UPDATE_FILE_PATH, function () _SendMessage("Successfully updated. ("..version.." => "..ServerVersion.."), press F9 twice to load the updated version.") end) end, 2)
 				return
 			else
-				_SendMessage("You have got the latest version ("..ServerVersion..")")
+				DelayAction(function() _SendMessage("You have got the latest version ("..ServerVersion..")") end, 4)
 			end
 		end
 	else
